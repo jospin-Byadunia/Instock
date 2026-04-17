@@ -27,37 +27,23 @@ A scalable backend system for managing inventory across multiple warehouses. Bui
 
 ---
 
-## 📁 Project Structure
-
-backend/
-│
-├── apps/
-│ ├── items/
-│ ├── stock/
-│ ├── logs/
-│
-├── config/
-├── manage.py
-├── requirements.txt
-└── .env
-
 ## ⚙️ Installation
 
-# 1. Clone repository
+### 1. Clone repository
 
-git clone https://github.com/your-username/inventory-system.git
-cd inventory-system/backend
+git clone https://github.com/jospin-Byadunia/Instock.git
+cd Instock/backend
 
-# 2. Create virtual environment
+### 2. Create virtual environment
 
 python -m venv venv
 source venv/Scripts/activate # Windows
 
-# 3. Install dependencies
+### 3. Install dependencies
 
 pip install -r requirements.txt
 
-# 4. Setup environment variables
+### 4. Setup environment variables
 
 Create a .env file in backend root:
 
@@ -65,38 +51,38 @@ Create a .env file in backend root:
 - DEBUG=True
 - DATABASE_URL=your_database_url
 
-# 5. Run migrations
+### 5. Run migrations
 
 python manage.py makemigrations
 python manage.py migrate
 
-# 6. Create superuser
+### 6. Create superuser
 
 python manage.py createsuperuser
 
-# 7. Run server
+### 7. Run server
 
 python manage.py runserver
 
 ## 📡 API Endpoints
 
-# Authentication
+### Authentication
 
 POST /api/auth/login/
 POST /api/auth/logout/
 
-# Items
+### Items
 
 GET /api/items/
 POST /api/items/
 
-# Stock
+### Stock
 
 POST /api/v1/manage/stock/in/
 POST /api/v1/manage/stock/out/
 GET /api/v1/manage/stock/
 
-# Warehouses
+### Warehouses
 
 GET /api/warehouses/
 POST /api/warehouses/
