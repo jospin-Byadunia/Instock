@@ -1,0 +1,55 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Django stuff:
+*.log
+*.pot
+*.pyc
+*.mo
+*.sqlite3
+db.sqlite3
+media/
+staticfiles/
+
+# Migrations (optional: usually you want to keep them)
+**/migrations/*.py
+!**/migrations/__init__.py
+
+# Environment
+.env
+venv/
+ENV/
+env/
+.venv/
+
+# IDEs and editors
+.vscode/
+.idea/
+*.iml
+
+# OS files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Testing
+.pytest_cache/
+coverage.xml
+*.cover
+.hypothesis/
+
+# Backup files
+*.bak
+*.swp
+*.swo
