@@ -36,8 +36,8 @@ cd Instock/backend
 
 ### 2. Create virtual environment
 
-python -m venv venv
-source venv/Scripts/activate # Windows
+- python -m venv venv
+- source venv/Scripts/activate # Windows
 
 ### 3. Install dependencies
 
@@ -53,8 +53,8 @@ Create a .env file in backend root:
 
 ### 5. Run migrations
 
-python manage.py makemigrations
-python manage.py migrate
+- python manage.py makemigrations
+- python manage.py migrate
 
 ### 6. Create superuser
 
@@ -64,32 +64,34 @@ python manage.py createsuperuser
 
 python manage.py runserver
 
+---
+
 ## 📡 API Endpoints
 
 ### Authentication
 
-POST /api/auth/login/
-POST /api/auth/logout/
+- POST /api/auth/login/
+- POST /api/auth/logout/
 
 ### Items
 
-GET /api/items/
-POST /api/items/
+- GET /api/items/
+- POST /api/items/
 
 ### Stock
 
-POST /api/v1/manage/stock/in/
-POST /api/v1/manage/stock/out/
-GET /api/v1/manage/stock/
+- POST /api/v1/manage/stock/in/
+- POST /api/v1/manage/stock/out/
+- GET /api/v1/manage/stock/
 
 ### Warehouses
 
-GET /api/warehouses/
-POST /api/warehouses/
+- GET /api/warehouses/
+- POST /api/warehouses/
 
 ## 👨‍💻 Author
 
-Jospin Murhiorhakube B.
+Jospin Murhiorhakube B. <br>
 Backend Developer | Django | Networking & Systems
 
 ## ⭐ Notes
