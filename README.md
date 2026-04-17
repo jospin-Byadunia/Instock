@@ -31,7 +31,7 @@ A scalable backend system for managing inventory across multiple warehouses. Bui
 
 ### 1. Clone repository
 
-git clone https://github.com/jospin-Byadunia/Instock.git
+git clone https://github.com/jospin-Byadunia/Instock.git <br>
 cd Instock/backend
 
 ### 2. Create virtual environment
