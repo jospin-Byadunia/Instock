@@ -5,13 +5,13 @@ from .serializers import ItemSerializer, CategorySerializer
 
 
 
-class itemViewSet(viewsets.ModelViewSet):
-    queryset = Item.objects.all()
+class ItemViewSet(viewsets.ModelViewSet):
+    queryset = Item.objects.all().order_by('-created_at')
     serializer_class = ItemSerializer
     permission_classes = [permissions.IsAuthenticated]
 
 class CategoryViewSet(viewsets.ModelViewSet):
-    queryset = Category.objects.all()
+    queryset = Category.objects.all().order_by('name')
     serializer_class = CategorySerializer
     permission_classes = [permissions.IsAuthenticated]
 
