@@ -32,8 +32,22 @@ ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost').split(',')
 
 AUTH_USER_MODEL = "accounts.CustomUser"
 
+
 CORS_ALLOW_CREDENTIALS = True
 
+CORS_ALLOWED_ORIGINS = [
+    "https://5d9f4f64-6274-43fb-90d6-5c3580563c0b.lovableproject.com",
+    "https://id-preview--5d9f4f64-6274-43fb-90d6-5c3580563c0b.lovable.app",
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://5d9f4f64-6274-43fb-90d6-5c3580563c0b.lovableproject.com",
+    "https://id-preview--5d9f4f64-6274-43fb-90d6-5c3580563c0b.lovable.app",
+    "https://50mz8x98-8000.euw.devtunnels.ms",
+]
+
+# CSRF_TRUSTED_ORIGINS = CORS_ALLOWED_ORIGINS
+# SIMPLE_JWT = {..., "AUTH_COOKIE_SECURE": True, "AUTH_COOKIE_SAMESITE": "None"}
 # Application definition
 
 INSTALLED_APPS = [
@@ -43,6 +57,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
     'apps.accounts',
     'apps.items',
     'apps.logs',
@@ -86,11 +101,15 @@ SIMPLE_JWT = {
     'REFRESH_TOKEN_LIFETIME': timedelta(days=7),       # long-lived
     'ROTATE_REFRESH_TOKENS': True,                     # optional: rotate refresh tokens
     'BLACKLIST_AFTER_ROTATION': True,                  # optional: blacklist old refresh tokens
+    "AUTH_COOKIE_SECURE": True, 
+    "AUTH_COOKIE_SAMESITE": "None",
+    "AUTH_COOKIE_HTTPONLY": True,
 }
 
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',

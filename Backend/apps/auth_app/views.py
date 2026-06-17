@@ -42,8 +42,8 @@ class LoginView(APIView):
             key="access",
             value=str(access),
             httponly=True,
-            secure=False,   # set True in production (HTTPS)
-            samesite="Lax",
+            secure=True,   # set True in production (HTTPS)
+            samesite="none",
             max_age=60 * 15,  # 15 minutes
         )
 
@@ -52,8 +52,8 @@ class LoginView(APIView):
             key="refresh",
             value=str(refresh),
             httponly=True,
-            secure=False,
-            samesite="Lax",
+            secure=True,
+            samesite="none",
             max_age=60 * 60 * 24 * 7,  # 7 days
         )
 
@@ -88,8 +88,8 @@ class RefreshTokenView(APIView):
                 key="access",
                 value=str(access),
                 httponly=True,
-                secure=False,
-                samesite="Lax",
+                secure=True,
+                samesite="none",
             )
 
             return response
