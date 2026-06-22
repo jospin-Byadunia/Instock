@@ -4,9 +4,16 @@ from django.conf import settings
 
 class StockLog(models.Model):
     ACTION_CHOICES = [
-        ('in', 'Stock In'),
-        ('out', 'Stock Out')
+        ('IN', 'Stock In'),
+        ('OUT', 'Stock Out')
     ]
+    organization = models.ForeignKey(
+        "accounts.Organization",
+        on_delete=models.CASCADE,
+        related_name="stock_logs",
+        null=True,
+        blank=True,
+    )
     item = models.ForeignKey(Item, on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField()
     sku = models.CharField(max_length=100, null=True, blank=True)

@@ -11,6 +11,7 @@ class StockLogViewSet(ReadOnlyModelViewSet):
         user = self.request.user
 
         qs = StockLog.objects.select_related(
+            "organization",
             "item",
             "performed_by"
         )
@@ -18,4 +19,7 @@ class StockLogViewSet(ReadOnlyModelViewSet):
         if user.is_superuser:
             return qs
 
-        return qs.filter(performed_by=user)
+        if not user.organization:
+            return qs.none()
+
+        return qs.filter(organization=user.organization)

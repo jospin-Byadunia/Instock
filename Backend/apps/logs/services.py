@@ -1,7 +1,8 @@
 from .models import StockLog
 
-def create_stock_log(*, item, action,  performed_by=None, note=None, quantity=None, sku=None):
+def create_stock_log(*, item, action, organization=None, performed_by=None, note=None, quantity=None, sku=None):
     StockLog.objects.create(
+        organization=organization or item.organization,
         item=item,
         quantity=quantity,
         sku=item.sku,

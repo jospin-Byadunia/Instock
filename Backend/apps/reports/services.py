@@ -2,7 +2,7 @@ from django.apps import apps
 import csv
 from io import StringIO
 
-def export_table(model_name, app_name, start_date=None, end_date=None):
+def export_table(model_name, app_name, start_date=None, end_date=None, organization=None):
     """
     Export a table to CSV format.
     :param model_name: Name of the model (string)
@@ -13,6 +13,10 @@ def export_table(model_name, app_name, start_date=None, end_date=None):
     """
     model = apps.get_model(app_name, model_name)
     queryset = model.objects.all()
+
+    model_fields = {field.name for field in model._meta.get_fields()}
+    if organization and "organization" in model_fields:
+        queryset = queryset.filter(organization=organization)
 
     if model_name.lower() == "stocklog" and start_date and end_date:
         queryset = queryset.filter(created_at__date__range=[start_date, end_date])

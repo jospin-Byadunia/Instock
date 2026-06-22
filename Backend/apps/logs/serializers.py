@@ -9,6 +9,7 @@ class StockLogSerializer(serializers.ModelSerializer):
         model = StockLog
         fields = [
             "id",
+            "organization",
             "item",
             "item_name",
             "quantity",

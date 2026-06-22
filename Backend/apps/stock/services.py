@@ -2,10 +2,18 @@ from django.db import transaction
 from apps.logs.services import create_stock_log
 from django.core.exceptions import ValidationError
 from apps.stock.models import Stock
-from apps.logs.models import StockLog
+
+
 @transaction.atomic
 def stock_in(item, warehouse, user, quantity=1, note=""):
+    if quantity <= 0:
+        raise ValidationError("Quantity must be greater than zero.")
+
+    if item.organization_id != warehouse.organization_id:
+        raise ValidationError("Item and warehouse must belong to the same organization.")
+
     stock_obj, created = Stock.objects.get_or_create(
+        organization=item.organization,
         item=item,
         warehouse=warehouse,
         defaults={"quantity": 0}
@@ -15,6 +23,7 @@ def stock_in(item, warehouse, user, quantity=1, note=""):
     stock_obj.save(update_fields=["quantity"])
 
     create_stock_log(
+        organization=item.organization,
         item=item,
         quantity=quantity,
         action="IN",
@@ -28,10 +37,17 @@ def stock_in(item, warehouse, user, quantity=1, note=""):
 
 @transaction.atomic
 def stock_out(*, item, warehouse, quantity, user, note=None):
-    stock_obj = Stock.objects.get(item=item, warehouse=warehouse)
-
     if quantity <= 0:
         raise ValidationError("Quantity must be greater than zero.")
+
+    if item.organization_id != warehouse.organization_id:
+        raise ValidationError("Item and warehouse must belong to the same organization.")
+
+    stock_obj = Stock.objects.get(
+        organization=item.organization,
+        item=item,
+        warehouse=warehouse,
+    )
 
     if stock_obj.quantity < quantity:
         raise ValidationError("Insufficient stock.")
@@ -40,6 +56,7 @@ def stock_out(*, item, warehouse, quantity, user, note=None):
     stock_obj.save(update_fields=["quantity"])
 
     create_stock_log(
+        organization=item.organization,
         item=item,
         quantity=quantity,
         action="OUT",

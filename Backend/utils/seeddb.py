@@ -1,7 +1,7 @@
 import requests
 
 url = "http://127.0.0.1:8000/api/v1/items/categories/"
-token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzY2MzI1OTEzLCJpYXQiOjE3NjYzMjUwMTMsImp0aSI6ImY2N2FkOGVlNTZlZTQ1YTdiNDcxNWVkMDkwZmFmZDFjIiwidXNlcl9pZCI6IjEiLCJyb2xlIjoiYWRtaW4ifQ.cgVsz7ocUUq2GaZFQ5EoSHR_lPrbSfKTu_p9T7cWGpo"
+token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzgyMTMwOTY2LCJpYXQiOjE3ODIxMzAwNjYsImp0aSI6IjU5NDljNWRiODFhYzRkMGQ5ZTlmOGVlOTMxODdkOWMxIiwidXNlcl9pZCI6IjIifQ.0RZeEymXY4HFcXlv98GTMtM6R_N3tXeGN77cUAyx5z4"
 categories = [
   {"name": "Computer Accessories", "description": "Peripherals and accessories for computers, such as keyboards, mice, webcams, headphones, and laptop chargers."},
   {"name": "Networking Equipment", "description": "Devices for network connectivity including routers, switches, access points, network cables, and firewalls."},
